@@ -1,19 +1,15 @@
 import {AppShell, Loader, MantineProvider} from "@mantine/core";
 import {lazy, Suspense} from "react";
+import AnotherComponent from "./AnotherComponent.jsx";
 
-const AnotherComponent = lazy(async () => {
-    await new Promise(resolve => setTimeout(() => resolve(), 1000));
-    return import("./AnotherComponent.jsx")
-});
-
-function App() {
+function App({ store }) {
     return (
         <Suspense fallback={<Loader/>}>
             <MantineProvider>
                 <AppShell>
                     <div>waiting</div>
                     <Suspense fallback={'...'}>
-                        <AnotherComponent />
+                        <AnotherComponent store={store}/>
                     </Suspense>
                </AppShell>
             </MantineProvider>

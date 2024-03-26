@@ -2,10 +2,11 @@ import { renderToPipeableStream } from 'react-dom/server';
 import App from "./App";
 import Html from "./Html.jsx";
 
-export default function renderer (options) {
+// store added, so vite cannot cache resolved promise
+export default function renderer (options, store) {
     return renderToPipeableStream(
         <Html>
-            <App />
+            <App store={store} />
         </Html>,
         options,
     );

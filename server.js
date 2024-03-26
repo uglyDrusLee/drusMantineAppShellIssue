@@ -25,7 +25,7 @@ app.get('/', async (req, res) => {
     res.write("<!DOCTYPE html><html>");
     const renderer = (await vite.ssrLoadModule(path.join(__dirname, '/frontend/server.jsx'))).default;
 
-
+    const store = {};
 
     const stream = renderer({
             onShellReady: () => {
@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
                 res.end('Error');
             },
             bootstrapModules: ['/client.jsx']
-    })
+    }, store)
 
 });
 

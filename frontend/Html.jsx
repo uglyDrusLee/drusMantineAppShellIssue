@@ -3,6 +3,7 @@ function Html({ children }) {
         <>
             <head>
                 <script
+                    async
                     type="module"
                     dangerouslySetInnerHTML={{
                         __html: `

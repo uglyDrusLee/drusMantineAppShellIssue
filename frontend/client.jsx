@@ -5,7 +5,8 @@ const rootEl = document.getElementById('root');
 if (rootEl) {
     hydrateRoot(
         rootEl,
-        <App />
+        // mock store
+        <App store={{ key: () => 'fromPromise' }} />
     );
 }
 
